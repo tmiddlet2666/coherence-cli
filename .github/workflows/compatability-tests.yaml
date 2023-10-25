@@ -68,7 +68,7 @@ jobs:
       run: |
         export COHERENCE_BASE_IMAGE=${{ matrix.javaImage }}
         export COHERENCE_VERSION=${{ matrix.coherenceVersion }}
-		make clean build-test-images test-e2e-standalone || docker ps -a | awk '{print $1}' | while read container; do docker logs $container > build/_output/test-logs/${container}.log ; done 
+        make clean build-test-images test-e2e-standalone || docker ps -a | awk '{print $1}' | while read container; do docker logs $container > build/_output/test-logs/${container}.log ; done 
         make test-clean test-discovery
 
     - uses: actions/upload-artifact@v3
